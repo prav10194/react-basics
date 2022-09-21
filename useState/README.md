@@ -5,9 +5,11 @@ Hooks are a new addition in React 16.8. They let you use state and other React f
 ## Usage
 
 Mostly written outside the main function
+<br>
 const [variable, setVariable] = useState(props.variable);
 
 Set state
+<br>
 setVariable(props.variable ** 2)
 
 
