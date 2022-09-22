@@ -1,6 +1,7 @@
 ## useState
 
 Hooks are a new addition in React 16.8. They let you use state and other React features without writing a class.
+<b>States are not updated immediately, React schedules them at a later time</b>
 
 ## Usage
 
@@ -13,7 +14,7 @@ Set state
 setVariable(props.variable ** 2)
 
 
-## Example
+## Basic Example
 
 App.js
 
@@ -58,4 +59,29 @@ const TestUseStateComponent = (props) => {
 }
 
 export default TestUseStateComponent;
+```
+
+## Advance Example - Updating multiple states
+
+```js
+const [userInput, setUserInput] = useState({
+        title: '',
+        date: ''
+    })
+    
+// updating title   
+const titleChangeHandler = (event) => {
+        setUserInput({
+            ...userInput,
+            title: event.target.value 
+        }); 
+    }    
+```
+
+The above approach might give an issue as React doesn't update state immediately. Better approach would be to use prevState
+
+```js
+setUserInput((prevState) => {
+    return { ...prevState, title: event.target.value };
+});
 ```
