@@ -26,6 +26,10 @@ In React, component properties should be kept in an object called state.
 
 It is always called with props. 
 
+#### componentWillMount()
+
+This method is called when a component gets mounted on the body for the first time. Called before render
+
 #### render()
 
 The render() method is required, and is the method that actually outputs the HTML to the DOM.
@@ -49,6 +53,36 @@ The componentDidMount() method is called after the component is rendered.
 #### componentWillUnmount()
 
 The componentWillUnmount method is called when the component is about to be removed from the DOM.
+
+#### shouldComponentUpdate(nextProps, nextState) 
+
+Called when state is changed. Returns true or false based on if we want to re-render the component. 
+
+Example to not re-render the document on state change: 
+
+```js
+shouldComponentUpdate(nextProps, nextState) {
+        // called when setState is called in changeStateHandler
+        console.log('shouldComponentUpdate');
+        return false
+}
+
+changeStateHandler = () => {
+    this.setState({
+        message: 'state changed'
+    })
+}
+
+render(){
+    console.log('render');
+    return (
+        <div>
+        {this.state.message}
+        <br/>
+        <button onClick={this.changeStateHandler}>Update State</button>
+        </div>
+    )
+```
 
 Refer examples for all the methods here - https://www.w3schools.com/react/react_class.asp
 
