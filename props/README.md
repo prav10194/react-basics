@@ -47,3 +47,41 @@ export default class ChildComponent extends React.Component {
 }
 
 ```
+
+## Example 2 - calling a parent function from child
+
+ParentClass.js
+
+```js
+const ParentClass = () => {
+
+    const simplifiedFunction  = (value) => {
+        console.log('Parent function called by Child with value: ' + value)
+      }
+
+    return (
+        <div>
+            <ButtonContainer buttonHandler={simplifiedFunction}></ButtonContainer>
+        </div>
+    );
+};
+
+export default QuestionContainer;
+```
+
+ChildClass.js
+
+```js
+const ChildClass = (props) => {
+
+    const testButtonHandler = () => {
+        props.buttonHandler('1')
+    }
+
+    return (
+        <div><button onClick={testButtonHandler}>Test</button></div>
+    );
+};
+
+export default ChildClass;
+```
